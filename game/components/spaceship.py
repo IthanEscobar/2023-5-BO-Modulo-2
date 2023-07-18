@@ -16,13 +16,24 @@ class Spaceship(Sprite):
         self.rect.y = self.Y_POS
 
     def update(self, user_input):
-        if user_input[pygame.K_LEFT]:
-            if self.rect.left > 0:
-                self.rect.x -= 10
-        elif user_input[pygame.K_RIGHT]:
-            if self.rect.right < SCREEN_WIDTH:
-                self.rect.x += 10 
+     if user_input[pygame.K_LEFT]:
+        self.rect.x -= 10
+        if self.rect.left < 0:
+           self.rect.left = SCREEN_WIDTH - 60
+     elif user_input[pygame.K_RIGHT]:
+        self.rect.x += 10
+        if self.rect.right > SCREEN_WIDTH:
+           self.rect.right = 60          
+     elif user_input[pygame.K_UP]:
+        if self.rect.top > SCREEN_HEIGHT//2:
+            self.rect.y -= 10
+     elif user_input[pygame.K_DOWN]:
+        if self.rect.bottom < SCREEN_HEIGHT:
+           self.rect.bottom += 10
 
+        
 
     def draw(self, screen):
         screen.blit(self.image, (self.rect.x, self.rect.y))
+
+         
