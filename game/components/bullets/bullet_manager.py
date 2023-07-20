@@ -2,7 +2,6 @@ import pygame
 
 from game.utils.constants import SCREEN_HEIGHT
 
-MAX_PLAYER_BULLETS = 3
 class BulletManager:
     def __init__(self):
         self.player_bullets = []
