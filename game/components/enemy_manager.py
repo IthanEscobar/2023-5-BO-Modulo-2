@@ -23,3 +23,6 @@ class EnemyManager:
             enemy_type = random.choice(['enemy_1', 'enemy_2'])
             enemy = Enemy()
             self.enemies.append(enemy)
+
+    def reset(self):
+        self.enemies = []
