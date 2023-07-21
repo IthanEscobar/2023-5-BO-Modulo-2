@@ -41,5 +41,3 @@ class BulletManager:
 
         elif bullet.owner == 'player' and len(self.player_bullets) < 1:
             self.player_bullets.append(bullet)
-    
-

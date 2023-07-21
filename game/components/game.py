@@ -24,6 +24,7 @@ class Game:
         self.menu = Menu('Press any key to start...', self.screen)
         self.death_count = 0
         self.score = 0
+        self.best_score = 0
 
     def execute(self):
         self.running = True
@@ -77,18 +78,21 @@ class Game:
         self.menu.reset_screen_color(self.screen)   
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
-        if self.death_count == 0:           
-            self.menu.draw(self.screen)
-        else:
-            self.menu.update_message('New message')
-            self.menu.draw(self.screen)
 
+        if self.death_count == 0:           
+         self.menu.draw(self.screen)
+        else:
+          self.menu.update_message('Game over. Press any key to restart', self.score)
+          self.menu.draw(self.screen)
+        
         icon = self.image = pygame.transform.scale(ICON, (80, 120))
         self.screen.blit(icon, (half_screen_width - 50, half_screen_height - 150))
         self.menu.update(self)
         
     def update_score(self):
         self.score += 1
+        if self.score > self.best_score:
+            self.best_score = self.score
         
     def draw_score(self):
         font = pygame.font.Font(FONT_STYLE, 30)
@@ -96,3 +100,8 @@ class Game:
         text_rect = text.get_rect()
         text_rect.center = (1000, 50)
         self.screen.blit(text, text_rect)
+
+        best_score_text = font.render(f'Best Score: {self.best_score}', True, (255, 255, 255))
+        best_score_rect = best_score_text.get_rect()
+        best_score_rect.center = (1000, 80)
+        self.screen.blit(best_score_text, best_score_rect)
