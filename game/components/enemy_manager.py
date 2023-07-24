@@ -20,9 +20,10 @@ class EnemyManager:
 
     def add_enemy(self):
         if len(self.enemies) < 1:
-            enemy_type = random.choice(['enemy_1', 'enemy_2'])
-            enemy = Enemy()
+            enemy_type = random.choice([1, 2, 3])
+            enemy = Enemy(enemy_type)
             self.enemies.append(enemy)
+
 
     def reset(self):
         self.enemies = []

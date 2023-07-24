@@ -6,6 +6,7 @@ class BulletManager:
     def __init__(self):
         self.player_bullets = []
         self.enemy_bullets = []   
+        
 
     def update(self, game):
         for bullet in self.player_bullets:
